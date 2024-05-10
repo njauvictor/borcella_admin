@@ -89,15 +89,15 @@ const ProductForm: React.FC<ProductFormProps> = ({ initialData }) => {
         },
   });
 
-  const handleKeyPress = (
-    e:
-      | React.KeyboardEvent<HTMLInputElement>
-      | React.KeyboardEvent<HTMLTextAreaElement>
-  ) => {
-    if (e.key === "Enter") {
-      e.preventDefault();
-    }
-  };
+const handleKeyPress = (
+  e:
+    | React.KeyboardEvent<HTMLInputElement>
+    | React.KeyboardEvent<HTMLTextAreaElement>
+) => {
+  if (e.key === "Enter" && e.currentTarget instanceof HTMLInputElement) {
+    e.preventDefault();
+  }
+};
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
@@ -153,24 +153,25 @@ const ProductForm: React.FC<ProductFormProps> = ({ initialData }) => {
               </FormItem>
             )}
           />
-          <FormField
-            control={form.control}
-            name="description"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Description</FormLabel>
-                <FormControl>
-                  <Textarea
-                    placeholder="Description"
-                    {...field}
-                    rows={5}
-                    onKeyDown={handleKeyPress}
-                  />
-                </FormControl>
-                <FormMessage className="text-red-1" />
-              </FormItem>
-            )}
-          />
+                <FormField
+          control={form.control}
+          name="description"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Description</FormLabel>
+              <FormControl>
+                <Textarea
+                  placeholder="Description"
+                  {...field}
+                  rows={5} // Add the rows attribute with a desired number of rows
+                  onKeyDown={handleKeyPress}
+                />
+              </FormControl>
+              <FormMessage className="text-red-1" />
+            </FormItem>
+          )}
+        />
+
           <FormField
             control={form.control}
             name="media"
@@ -199,7 +200,7 @@ const ProductForm: React.FC<ProductFormProps> = ({ initialData }) => {
               name="price"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Price ($)</FormLabel>
+                  <FormLabel>Price (Ksh)</FormLabel>
                   <FormControl>
                     <Input
                       type="number"
@@ -217,7 +218,7 @@ const ProductForm: React.FC<ProductFormProps> = ({ initialData }) => {
               name="expense"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Expense ($)</FormLabel>
+                  <FormLabel>Expense (Ksh)</FormLabel>
                   <FormControl>
                     <Input
                       type="number"

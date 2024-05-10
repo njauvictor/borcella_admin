@@ -48,11 +48,15 @@ const CollectionForm: React.FC<CollectionFormProps> = ({ initialData }) => {
         },
   });
 
-  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement> | React.KeyboardEvent<HTMLTextAreaElement>) => {
-    if (e.key === "Enter") {
+  const handleKeyPress = (
+    e:
+      | React.KeyboardEvent<HTMLInputElement>
+      | React.KeyboardEvent<HTMLTextAreaElement>
+  ) => {
+    if (e.key === "Enter" && e.currentTarget instanceof HTMLInputElement) {
       e.preventDefault();
     }
-  }
+  };
   
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
