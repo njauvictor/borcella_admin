@@ -1,5 +1,6 @@
 "use client"
 
+import { useState } from 'react';
 import { UserButton } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
@@ -9,6 +10,13 @@ import { navLinks } from "@/lib/constants";
 
 const LeftSideBar = () => {
   const pathname = usePathname();
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleClick = () => {
+    setIsLoading(true);
+    // handle your click event here
+    // remember to set isLoading back to false when done
+  }
 
   return (
     <div className="h-screen left-0 top-0 sticky p-10 flex flex-col gap-16 bg-blue-900 shadow-xl max-lg:hidden">
@@ -19,9 +27,10 @@ const LeftSideBar = () => {
           <Link
             href={link.url}
             key={link.label}
-            className={`flex gap-4 text-body-medium ${
+            className={`flex gap-4 text-body-medium hover:text-blue-200 active:text-blue-300 ${
               pathname === link.url ? "text-blue-200" : "text-white"
             }`}
+            onClick={handleClick}
           >
             {link.icon} <p>{link.label}</p>
           </Link>
@@ -32,6 +41,8 @@ const LeftSideBar = () => {
         <UserButton />
         <p>Edit Profile</p>
       </div>
+
+      {isLoading && <div>Loading...</div>}
     </div>
   );
 };
