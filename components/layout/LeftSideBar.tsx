@@ -7,15 +7,21 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import { navLinks } from "@/lib/constants";
+import router from 'next/router';
 
 const LeftSideBar = () => {
   const pathname = usePathname();
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleClick = () => {
+  const handleClick = (url: string) => {
     setIsLoading(true);
+    if (window.navigator && window.navigator.vibrate) {
+      window.navigator.vibrate(200); // vibrate for 200ms
+    }
     // handle your click event here
     // remember to set isLoading back to false when done
+    router.push(url);
+    setIsLoading(false);
   }
 
   return (
@@ -25,10 +31,10 @@ const LeftSideBar = () => {
         <Link
           href={link.url}
           key={link.label}
-          className={`flex gap-4 text-body-medium hover:text-blue-200 active:text-blue-300 ${
+          className={`flex gap-4 text-body-medium hover:text-blue-200 active:text-blue-300 transition-colors duration-200 ${
             pathname === link.url ? "text-blue-200" : "text-white"
           }`}
-          onClick={handleClick}
+          onClick={() => handleClick(link.url)}
         >
           {link.icon} <p>{link.label}</p>
         </Link>
