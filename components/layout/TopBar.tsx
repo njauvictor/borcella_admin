@@ -14,8 +14,8 @@ const TopBar = () => {
   const pathname = usePathname();
 
   return (
-    <div className="sticky top-0 z-20 w-full flex justify-between items-center px-8 py-4 bg-blue-2 shadow-xl lg:hidden">
-      <Image src="/logo.png" alt="logo" width={150} height={70} />
+    <div className="sticky top-0 z-20 w-full flex justify-between items-center px-8 py-4 bg-green1 shadow-xl lg:hidden">
+      <Image src="/OnlineDuka2.png" alt="logo" width={150} height={70} />
 
       <div className="flex gap-8 max-md:hidden">
         {navLinks.map((link) => (
@@ -31,7 +31,7 @@ const TopBar = () => {
 
       <div className="relative flex gap-4 items-center">
         <Menu
-          className="cursor-pointer md:hidden"
+          className="cursor-pointer md:hidden text-grey-2"
           onClick={() => setDropdownMenu(!dropdownMenu)}
         />
         {dropdownMenu && (

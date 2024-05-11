@@ -19,8 +19,8 @@ const LeftSideBar = () => {
   }
 
   return (
-    <div className="min-h-screen left-0 top-0 sticky p-10 flex flex-col gap-16 bg-blue-900 shadow-xl max-lg:hidden">
-      <Image src="/onlineduka.png" alt="logo" width={120} height={80} className='max-lg:hidden'/>
+    <div className="min-h-screen left-0 top-0 sticky p-10 flex flex-col gap-16 bg-green1 shadow-xl max-lg:hidden">
+      <Image src="/OnlineDuka2.png" alt="logo" width={120} height={80} className='max-lg:hidden'/>
       {navLinks.map((link) => (
         <Link
           href={link.url}
