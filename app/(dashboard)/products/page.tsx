@@ -45,7 +45,7 @@ const Products = () => {
           onClick={() => router.push("/products/new")}
         >
           <Plus className="h-4 w-4 mr-2" />
-          Create Product
+          Create
         </Button>
       </div>
       <Separator className="bg-grey-1 my-4" />

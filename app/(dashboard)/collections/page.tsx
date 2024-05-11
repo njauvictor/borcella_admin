@@ -39,7 +39,7 @@ const Collections = () => {
        <p className="text-[20px] sm:text-[16px] md:text-[20px] font-semibold">Collections</p>  
        <Button className="bg-blue-800 opacity-70 text-white px-3 py-2 sm:px-2 sm:py-1" onClick={() => router.push("/collections/new")}>
   <Plus className="h-3 w-3 mr-1" />
-  Create Collection
+  Create
 </Button>
       </div>
       <Separator className="bg-grey-1 my-4" />
